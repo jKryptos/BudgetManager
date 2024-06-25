@@ -3,7 +3,7 @@ import java.text.DecimalFormat;
 
 public class Category {
 
-    private String name;
+    private final String name;
     private BigDecimal funds;
 
     DecimalFormat format = new DecimalFormat("##0.00");
@@ -13,21 +13,17 @@ public class Category {
         this.funds = BigDecimal.valueOf(0.00);
     }
 
-    public Category(String name, BigDecimal funds){
+    public Category(String name, double funds){
         this.name = name;
-        this.funds = funds;
+        this.funds = BigDecimal.valueOf(funds);
     }
 
     public void addFunds(BigDecimal amountToAdd){
         this.funds = this.funds.add(amountToAdd);
     }
 
-    public void removeFunds(BigDecimal amountToRemove){
-        this.funds = this.funds.subtract(amountToRemove);
-    }
-
-    public void reportCategory(){
-        System.out.println(this.name + ": $" + format.format(this.funds));
+    public void removeFunds(double amountToRemove){
+        this.funds = this.funds.subtract(BigDecimal.valueOf(amountToRemove));
     }
 
     public BigDecimal getFunds(){
@@ -42,4 +38,12 @@ public class Category {
         this.funds = this.funds.subtract(amountToMove);
         categoryToAddTo.addFunds(amountToMove);
     }
+
+    public String toString(){
+        return this.name + ": $" + format.format(this.funds);
+    }
+
+    /*    public void reportCategory(){
+        System.out.println(this.name + ": $" + format.format(this.funds));
+    }*/
 }
