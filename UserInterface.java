@@ -23,23 +23,17 @@ public class UserInterface {
 
     public int userInputInteger(){
         Scanner scanner = new Scanner(System.in);
-        int userSelection = Integer.parseInt(scanner.nextLine());
-        scanner.close();
-        return userSelection;
+        return Integer.parseInt(scanner.next());
     }
 
     public double userInputDouble(){
         Scanner scanner = new Scanner(System.in);
-        double userSelection = Double.parseDouble(scanner.nextLine());
-        scanner.close();
-        return userSelection;
+        return Double.parseDouble(scanner.next());
     }
 
     public void mainMenu(){
         System.out.println("1. Add funds\n2. Remove funds\n3. Move funds\n4. View all categories");
-        Scanner scanner = new Scanner(System.in);
-        int userSelection = Integer.parseInt(scanner.nextLine());
-        switch (userSelection) {
+        switch (userInputInteger()) {
             case 1:
                 addMenu();
                 break;
@@ -54,6 +48,8 @@ public class UserInterface {
                 break;
             default:
                 System.out.println("Invalid choice!, choose a number from 1 to 4.");
+                mainMenu();
+                break;
         }
     }
 
