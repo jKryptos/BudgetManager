@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    Category income = new Category("Income", 1000);
+    Category income = new Category("Income");
 
     Category bills = new Category("Bills");
     Category gas = new Category("Gas");
@@ -156,12 +156,13 @@ public class UserInterface {
                 break;
             default :
                 System.out.println("Invalid choice!");
-                addMenu();
+                removeMenu();
         }
         mainMenu();
     }
 
     public void moveMenu(){
+
     }
 
     public void viewAll(){
