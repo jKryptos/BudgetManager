@@ -35,7 +35,7 @@ public class Category {
     }
 
     public void moveFunds(Category categoryToAddTo, double amountToMove){
-        this.funds = this.funds .subtract(BigDecimal.valueOf(amountToMove));
+        this.funds = this.funds.subtract(BigDecimal.valueOf(amountToMove));
         categoryToAddTo.addFunds(amountToMove);
     }
 
