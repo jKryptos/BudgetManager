@@ -106,7 +106,7 @@ public class UserInterface {
     }
 
     public void removeMenu(){
-        System.out.println("Select category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. Bed\n9. House\n10. RRSP\n11. Return to main menu");
+        System.out.println("Select category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. Bed\n9. House\n10. RRSP\n11. Settlement\n12. Return to main menu");
         switch(userInputInteger()){
             case 1:
                 System.out.println("Enter amount:");
@@ -149,6 +149,9 @@ public class UserInterface {
                 rrsp.removeFunds(userInputDouble());
                 break;
             case 11:
+                System.out.println("Enter amount:");
+                settlement.removeFunds(userInputDouble());
+            case 12:
                 mainMenu();
                 break;
             default :
