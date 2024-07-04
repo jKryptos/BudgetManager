@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class UserInterface {
+    //Constant for variable initialization.
+    static final int ZERO = 0;
 
     Category income = new Category("Income");
 
@@ -22,13 +24,35 @@ public class UserInterface {
     }
 
     public int userInputInteger(){
-        Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.next());
+        boolean validInput = false;
+        int userInput = ZERO;
+
+        do{
+            try {
+                Scanner scanner = new Scanner(System.in);
+                userInput = Integer.parseInt(scanner.next());
+                validInput = true;
+            } catch (NumberFormatException nfe){
+                System.out.println("Invalid input, enter an integer.");
+            }
+        } while(!validInput);
+        return userInput;
     }
 
     public double userInputDouble(){
-        Scanner scanner = new Scanner(System.in);
-        return Double.parseDouble(scanner.next());
+        boolean validInput = false;
+        double userInput = ZERO;
+
+        do{
+            try{
+                Scanner scanner = new Scanner(System.in);
+                userInput = Double.parseDouble(scanner.next());
+                validInput = true;
+            } catch (NumberFormatException nfe){
+                System.out.println("Invalid input, enter a double.");
+            }
+        } while(!validInput);
+        return userInput;
     }
 
     public void mainMenu(){
