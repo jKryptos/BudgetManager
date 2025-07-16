@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class Category {
+public class Category implements Serializable {
 
     private final String name;
     private BigDecimal funds;
@@ -23,8 +24,12 @@ public class Category {
     }
 
     public void removeFunds(double amountToRemove){
-        this.funds = this.funds.subtract(BigDecimal.valueOf(amountToRemove));
-    }
+        if (this.funds.compareTo(BigDecimal.valueOf(amountToRemove)) < 0){
+            System.out.println("Insufficient funds!");
+        } else {
+            this.funds = this.funds.subtract(BigDecimal.valueOf(amountToRemove));
+            }
+        }
 
     public BigDecimal getFunds(){
         return this.funds;
@@ -34,16 +39,15 @@ public class Category {
         this.funds = BigDecimal.valueOf(funds);
     }
 
-    public void moveFunds(Category categoryToAddTo, double amountToMove){
+    public void moveFunds(Category categoryToAddTo, double amountToMove) {
+        if (this.funds.compareTo(BigDecimal.valueOf(amountToMove)) < 0) {
+            System.out.println("Insufficient funds!");
+        }
         this.funds = this.funds.subtract(BigDecimal.valueOf(amountToMove));
         categoryToAddTo.addFunds(amountToMove);
     }
 
-    public String toString(){
+    public String toString () {
         return this.name + ": $" + format.format(this.funds);
     }
-
-    /*    public void reportCategory(){
-        System.out.println(this.name + ": $" + format.format(this.funds));
-    }*/
 }

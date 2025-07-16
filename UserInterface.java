@@ -1,22 +1,18 @@
 import java.util.Scanner;
 
 public class UserInterface {
-    //Constant for variable initialization.
-    static final int ZERO = 0;
 
-    Category income = new Category("Income");
+    static final int DEFAULT_FUND_AMOUNT_ZERO = 0;
 
-    Category bills = new Category("Bills");
-    Category gas = new Category("Gas");
-    Category entertainment = new Category("Entertainment");
-    Category insurance = new Category("Insurance");
-
-    Category iLong = new Category("Long Fund");
-    Category iShort = new Category("Short Fund");
-    Category bed = new Category("Bed");
-    Category house = new Category("House");
-    Category rrsp = new Category("RRSP");
-    Category settlement = new Category("Settlement");
+    Category income = new Category("Income", 100);
+    Category bills = new Category("Bills", 100);
+    Category gas = new Category("Gas", 100);
+    Category entertainment = new Category("Entertainment", 100);
+    Category insurance = new Category("Insurance", 100);
+    Category iLong = new Category("Long Fund", 100);
+    Category iShort = new Category("Short Fund", 100);
+    Category house = new Category("House", 100);
+    Category rrsp = new Category("RRSP", 100);
 
     public void programStart(){
         System.out.println("**** WELCOME TO FINANCE TRACKER v0.1 ****");
@@ -25,7 +21,7 @@ public class UserInterface {
 
     public int userInputInteger(){
         boolean validInput = false;
-        int userInput = ZERO;
+        int userInput = DEFAULT_FUND_AMOUNT_ZERO;
 
         do{
             try {
@@ -41,7 +37,7 @@ public class UserInterface {
 
     public double userInputDouble(){
         boolean validInput = false;
-        double userInput = ZERO;
+        double userInput = DEFAULT_FUND_AMOUNT_ZERO;
 
         do{
             try{
@@ -56,7 +52,7 @@ public class UserInterface {
     }
 
     public void mainMenu(){
-        System.out.println("1. Add funds\n2. Remove funds\n3. Move funds\n4. View all categories");
+        System.out.println("1. Add funds\n2. Remove funds\n3. View all categories");
         switch (userInputInteger()) {
             case 1:
                 addMenu();
@@ -65,9 +61,6 @@ public class UserInterface {
                 removeMenu();
                 break;
             case 3:
-                moveMenu();
-                break;
-            case 4:
                 viewAll();
                 break;
             default:
@@ -77,7 +70,7 @@ public class UserInterface {
     }
 
     public void addMenu(){
-        System.out.println("Select category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. Bed\n9. House\n10. RRSP\n11. Return to main menu");
+        System.out.println("Select category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. House\n9. RRSP\n10. Return to main menu");
         switch(userInputInteger()){
             case 1:
                 System.out.println("Enter amount:");
@@ -109,17 +102,13 @@ public class UserInterface {
                 break;
             case 8:
                 System.out.println("Enter amount:");
-                bed.addFunds(userInputDouble());
+                house.addFunds(userInputDouble());
                 break;
             case 9:
                 System.out.println("Enter amount:");
-                house.addFunds(userInputDouble());
-                break;
-            case 10:
-                System.out.println("Enter amount:");
                 rrsp.addFunds(userInputDouble());
                 break;
-            case 11:
+            case 10:
                 mainMenu();
                 break;
             default :
@@ -130,7 +119,7 @@ public class UserInterface {
     }
 
     public void removeMenu(){
-        System.out.println("Select category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. Bed\n9. House\n10. RRSP\n11. Settlement\n12. Return to main menu");
+        System.out.println("Select category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. House\n9. RRSP\n10. Return to main menu");
         switch(userInputInteger()){
             case 1:
                 System.out.println("Enter amount:");
@@ -162,20 +151,13 @@ public class UserInterface {
                 break;
             case 8:
                 System.out.println("Enter amount:");
-                bed.removeFunds(userInputDouble());
+                house.removeFunds(userInputDouble());
                 break;
             case 9:
                 System.out.println("Enter amount:");
-                house.removeFunds(userInputDouble());
-                break;
-            case 10:
-                System.out.println("Enter amount:");
                 rrsp.removeFunds(userInputDouble());
                 break;
-            case 11:
-                System.out.println("Enter amount:");
-                settlement.removeFunds(userInputDouble());
-            case 12:
+            case 10:
                 mainMenu();
                 break;
             default :
@@ -185,12 +167,7 @@ public class UserInterface {
         mainMenu();
     }
 
-    public void moveMenu(){
-
-    }
-
     public void viewAll(){
-        //TODO: Add all these to a list and loop the print statement
         System.out.println(income);
         System.out.println(bills);
         System.out.println(gas);
@@ -198,10 +175,8 @@ public class UserInterface {
         System.out.println(insurance);
         System.out.println(iLong);
         System.out.println(iShort);
-        System.out.println(bed);
         System.out.println(house);
         System.out.println(rrsp);
-        System.out.println(settlement);
         Main.whiteSpace(1);
         mainMenu();
     }
