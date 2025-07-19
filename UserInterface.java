@@ -1,21 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
 
     static final int DEFAULT_FUND_AMOUNT_ZERO = 0;
+    List<Category> categories = new ArrayList<>();
 
-    Category income = new Category("Income", 100);
-    Category bills = new Category("Bills", 100);
-    Category gas = new Category("Gas", 100);
-    Category entertainment = new Category("Entertainment", 100);
-    Category insurance = new Category("Insurance", 100);
-    Category iLong = new Category("Long Fund", 100);
-    Category iShort = new Category("Short Fund", 100);
-    Category house = new Category("House", 100);
-    Category rrsp = new Category("RRSP", 100);
+
+//    Category income = new Category("Income", 100);
+//    Category bills = new Category("Bills", 100);
+//    Category gas = new Category("Gas", 100);
+//    Category entertainment = new Category("Entertainment", 100);
+//    Category insurance = new Category("Insurance", 100);
+//    Category iLong = new Category("Long Fund", 100);
+//    Category iShort = new Category("Short Fund", 100);
+//    Category house = new Category("House", 100);
+//    Category rrsp = new Category("RRSP", 100);
+
+    public void addCategoriesToArray(){
+        categories.add(new Category("Income", 100));
+        categories.add(new Category("Bills", 100));
+        categories.add(new Category("Gas", 100));
+        categories.add(new Category("Entertainment", 100));
+        categories.add(new Category("Insurance", 100));
+        categories.add(new Category("iLong", 100));
+        categories.add(new Category("iShort", 100));
+        categories.add(new Category("House", 100));
+        categories.add(new Category("RRSP", 100));
+    }
+
 
     public void programStart(){
         System.out.println("**** WELCOME TO FINANCE TRACKER v0.1 ****");
+        addCategoriesToArray();
         mainMenu();
     }
 
@@ -74,39 +92,39 @@ public class UserInterface {
         switch(userInputInteger()){
             case 1:
                 System.out.println("Enter amount:");
-                income.addFunds(userInputDouble());
+                categories.get(0).addFunds(userInputDouble());
                 break;
             case 2:
                 System.out.println("Enter amount:");
-                bills.addFunds(userInputDouble());
+                categories.get(1).addFunds(userInputDouble());
                 break;
             case 3:
                 System.out.println("Enter amount:");
-                gas.addFunds(userInputDouble());
+                categories.get(2).addFunds(userInputDouble());
                 break;
             case 4:
                 System.out.println("Enter amount:");
-                entertainment.addFunds(userInputDouble());
+                categories.get(3).addFunds(userInputDouble());
                 break;
             case 5:
                 System.out.println("Enter amount:");
-                insurance.addFunds(userInputDouble());
+                categories.get(4).addFunds(userInputDouble());
                 break;
             case 6:
                 System.out.println("Enter amount:");
-                iLong.addFunds(userInputDouble());
+                categories.get(5).addFunds(userInputDouble());
                 break;
             case 7:
                 System.out.println("Enter amount:");
-                iShort.addFunds(userInputDouble());
+                categories.get(6).addFunds(userInputDouble());
                 break;
             case 8:
                 System.out.println("Enter amount:");
-                house.addFunds(userInputDouble());
+                categories.get(7).addFunds(userInputDouble());
                 break;
             case 9:
                 System.out.println("Enter amount:");
-                rrsp.addFunds(userInputDouble());
+                categories.get(8).addFunds(userInputDouble());
                 break;
             case 10:
                 mainMenu();
@@ -123,39 +141,39 @@ public class UserInterface {
         switch(userInputInteger()){
             case 1:
                 System.out.println("Enter amount:");
-                income.removeFunds(userInputDouble());
+                categories.get(0).removeFunds(userInputDouble());
                 break;
             case 2:
                 System.out.println("Enter amount:");
-                bills.removeFunds(userInputDouble());
+                categories.get(1).removeFunds(userInputDouble());
                 break;
             case 3:
                 System.out.println("Enter amount:");
-                gas.removeFunds(userInputDouble());
+                categories.get(2).removeFunds(userInputDouble());
                 break;
             case 4:
                 System.out.println("Enter amount:");
-                entertainment.removeFunds(userInputDouble());
+                categories.get(3).removeFunds(userInputDouble());
                 break;
             case 5:
                 System.out.println("Enter amount:");
-                insurance.removeFunds(userInputDouble());
+                categories.get(4).removeFunds(userInputDouble());
                 break;
             case 6:
                 System.out.println("Enter amount:");
-                iLong.removeFunds(userInputDouble());
+                categories.get(5).removeFunds(userInputDouble());
                 break;
             case 7:
                 System.out.println("Enter amount:");
-                iShort.removeFunds(userInputDouble());
+                categories.get(6).removeFunds(userInputDouble());
                 break;
             case 8:
                 System.out.println("Enter amount:");
-                house.removeFunds(userInputDouble());
+                categories.get(7).removeFunds(userInputDouble());
                 break;
             case 9:
                 System.out.println("Enter amount:");
-                rrsp.removeFunds(userInputDouble());
+                categories.get(8).removeFunds(userInputDouble());
                 break;
             case 10:
                 mainMenu();
@@ -168,15 +186,15 @@ public class UserInterface {
     }
 
     public void viewAll(){
-        System.out.println(income);
-        System.out.println(bills);
-        System.out.println(gas);
-        System.out.println(entertainment);
-        System.out.println(insurance);
-        System.out.println(iLong);
-        System.out.println(iShort);
-        System.out.println(house);
-        System.out.println(rrsp);
+        System.out.println(categories.get(0));
+        System.out.println(categories.get(1));
+        System.out.println(categories.get(2));
+        System.out.println(categories.get(3));
+        System.out.println(categories.get(4));
+        System.out.println(categories.get(5));
+        System.out.println(categories.get(6));
+        System.out.println(categories.get(7));
+        System.out.println(categories.get(8));
         Main.whiteSpace(1);
         mainMenu();
     }
