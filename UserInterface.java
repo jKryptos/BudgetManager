@@ -186,15 +186,10 @@ public class UserInterface {
     }
 
     public void viewAll(){
-        System.out.println(categories.get(0));
-        System.out.println(categories.get(1));
-        System.out.println(categories.get(2));
-        System.out.println(categories.get(3));
-        System.out.println(categories.get(4));
-        System.out.println(categories.get(5));
-        System.out.println(categories.get(6));
-        System.out.println(categories.get(7));
-        System.out.println(categories.get(8));
+
+        for (int i = 0; i < categories.size(); i++){
+            System.out.println(categories.get(i));
+        }
         Main.whiteSpace(1);
         mainMenu();
     }
