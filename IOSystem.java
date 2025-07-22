@@ -29,6 +29,7 @@ public class IOSystem {
 
             Category.categories = (ArrayList<Category>) objectIn.readObject();
 
+            objectIn.close();
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not load data!");
         }
