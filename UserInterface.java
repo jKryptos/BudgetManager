@@ -66,49 +66,22 @@ public class UserInterface {
 
     public void addMenu(){
         System.out.println("*ADD FUNDS*\nSelect category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. House\n9. RRSP\n10. Return to main menu");
-        switch(userInputInteger()){
-            case 1:
-                System.out.println("Enter amount to add to " + Category.categories.get(0).getName() + " :");
-                Category.categories.get(0).addFunds(userInputDouble());
-                break;
-            case 2:
-                System.out.println("Enter amount to add to " + Category.categories.get(1).getName() + " :");
-                Category.categories.get(1).addFunds(userInputDouble());
-                break;
-            case 3:
-                System.out.println("Enter amount to add to " + Category.categories.get(2).getName() + " :");
-                Category.categories.get(2).addFunds(userInputDouble());
-                break;
-            case 4:
-                System.out.println("Enter amount to add to " + Category.categories.get(3).getName() + " :");
-                Category.categories.get(3).addFunds(userInputDouble());
-                break;
-            case 5:
-                System.out.println("Enter amount to add to " + Category.categories.get(4).getName() + " :");
-                Category.categories.get(4).addFunds(userInputDouble());
-                break;
-            case 6:
-                System.out.println("Enter amount to add to " + Category.categories.get(5).getName() + " :");
-                Category.categories.get(5).addFunds(userInputDouble());
-                break;
-            case 7:
-                System.out.println("Enter amount to add to " + Category.categories.get(6).getName() + " :");
-                Category.categories.get(6).addFunds(userInputDouble());
-                break;
-            case 8:
-                System.out.println("Enter amount to add to " + Category.categories.get(7).getName() + " :");
-                Category.categories.get(7).addFunds(userInputDouble());
-                break;
-            case 9:
-                System.out.println("Enter amount to add to " + Category.categories.get(8).getName() + " :");
-                Category.categories.get(8).addFunds(userInputDouble());
-                break;
-            case 10:
-                mainMenu();
-                break;
-            default :
-                System.out.println("Invalid choice!");
-                addMenu();
+
+        int choice = userInputInteger();
+
+        if (choice >= 1 && choice <= 9){
+            int index = choice -1;
+            if (index < Category.categories.size()){
+                String categoryName = Category.categories.get(index).getName();
+                System.out.println("Enter amount to add to " + categoryName + " :");
+                double amount = userInputDouble();
+                Category.categories.get(index).addFunds(amount);
+            }
+        } else if (choice == 10){
+            mainMenu();
+        } else {
+            System.out.println("Invalid Choice!");
+            addMenu();
         }
         if (!moveMenuFlag){
             mainMenu();
@@ -117,54 +90,25 @@ public class UserInterface {
 
     public void removeMenu(){
         System.out.println("*REMOVE FUNDS*\nSelect category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. House\n9. RRSP\n10. Return to main menu");
-        switch(userInputInteger()){
-            case 1:
-                System.out.println("Enter amount to remove from " + Category.categories.get(0).getName() + " :");
-                Category.categories.get(0).removeFunds(userInputDouble());
-                break;
-            case 2:
-                System.out.println("Enter amount to remove from " + Category.categories.get(1).getName() + " :");
-                Category.categories.get(1).removeFunds(userInputDouble());
-                break;
-            case 3:
-                System.out.println("Enter amount to remove from " + Category.categories.get(2).getName() + " :");
-                Category.categories.get(2).removeFunds(userInputDouble());
-                break;
-            case 4:
-                System.out.println("Enter amount to remove from " + Category.categories.get(3).getName() + " :");
-                Category.categories.get(3).removeFunds(userInputDouble());
-                break;
-            case 5:
-                System.out.println("Enter amount to remove from " + Category.categories.get(4).getName() + " :");
-                Category.categories.get(4).removeFunds(userInputDouble());
-                break;
-            case 6:
-                System.out.println("Enter amount to remove from " + Category.categories.get(5).getName() + " :");
-                Category.categories.get(5).removeFunds(userInputDouble());
-                break;
-            case 7:
-                System.out.println("Enter amount to remove from " + Category.categories.get(6).getName() + " :");
-                Category.categories.get(6).removeFunds(userInputDouble());
-                break;
-            case 8:
-                System.out.println("Enter amount to remove from " + Category.categories.get(7).getName() + " :");
-                Category.categories.get(7).removeFunds(userInputDouble());
-                break;
-            case 9:
-                System.out.println("Enter amount to remove from " + Category.categories.get(8).getName() + " :");
-                Category.categories.get(8).removeFunds(userInputDouble());
-                break;
-            case 10:
-                mainMenu();
-                break;
-            default :
-                System.out.println("Invalid choice!");
-                removeMenu();
+        int choice = userInputInteger();
+
+        if (choice >= 1 && choice <= 9){
+            int index = choice -1;
+            if (index < Category.categories.size()){
+                String categoryName = Category.categories.get(index).getName();
+                System.out.println("Enter amount to remove from " + categoryName + " :");
+                double amount = userInputDouble();
+                Category.categories.get(index).removeFunds(amount);
+            }
+        } else if (choice == 10){
+            mainMenu();
+        } else {
+            System.out.println("Invalid Choice!");
+            addMenu();
         }
         if (!moveMenuFlag){
             mainMenu();
         }
-
     }
 
     public void moveMenu(){
