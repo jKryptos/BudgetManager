@@ -11,15 +11,15 @@ public class Category implements Serializable {
     public static List<Category> categories = new ArrayList<>();
 
     public static void addCategoriesToArray(){
-        categories.add(new Category("Income", 100));
-        categories.add(new Category("Bills", 100));
-        categories.add(new Category("Gas", 100));
-        categories.add(new Category("Entertainment", 100));
-        categories.add(new Category("Insurance", 100));
-        categories.add(new Category("iLong", 100));
-        categories.add(new Category("iShort", 100));
-        categories.add(new Category("House", 100));
-        categories.add(new Category("RRSP", 100));
+        categories.add(new Category("Income"));
+        categories.add(new Category("Bills"));
+        categories.add(new Category("Gas"));
+        categories.add(new Category("Entertainment"));
+        categories.add(new Category("Insurance"));
+        categories.add(new Category("iLong"));
+        categories.add(new Category("iShort"));
+        categories.add(new Category("House"));
+        categories.add(new Category("RRSP"));
     }
 
     DecimalFormat format = new DecimalFormat("##0.00");

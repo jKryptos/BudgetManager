@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -5,9 +6,10 @@ public class UserInterface {
     static final int DEFAULT_FUND_AMOUNT_ZERO = 0;
     boolean moveMenuFlag = false;
 
-    public void programStart(){
+    public void programStart() throws IOException {
         System.out.println("**** WELCOME TO FINANCE TRACKER v0.1 ****");
         Category.addCategoriesToArray();
+        IOSystem.loadData();
         mainMenu();
     }
 
@@ -43,8 +45,9 @@ public class UserInterface {
         return userInput;
     }
 
-    public void mainMenu(){
-        System.out.println("1. Add funds\n2. Remove funds\n3. Move funds\n4. View all categories");
+    public void mainMenu() throws IOException {
+        try {
+            System.out.println("1. Add funds\n2. Remove funds\n3. Move funds\n4. View all categories\n5. Save data\n6. Load data");
         switch (userInputInteger()) {
             case 1:
                 addMenu();
@@ -58,13 +61,24 @@ public class UserInterface {
             case 4:
                 viewAll();
                 break;
+            case 5:
+                IOSystem.saveData();
+                mainMenu();
+                break;
+            case 6:
+                IOSystem.loadData();
+                mainMenu();
+                break;
             default:
                 System.out.println("Invalid choice!");
                 mainMenu();
+            }
+        } catch (IOException e){
+            System.out.println("Error");
         }
     }
 
-    public void addMenu(){
+    public void addMenu() throws IOException {
         System.out.println("*ADD FUNDS*\nSelect category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. House\n9. RRSP\n10. Return to main menu");
 
         int choice = userInputInteger();
@@ -88,7 +102,7 @@ public class UserInterface {
         }
     }
 
-    public void removeMenu(){
+    public void removeMenu() throws IOException {
         System.out.println("*REMOVE FUNDS*\nSelect category:\n1. Income\n2. Bills\n3. Gas\n4. Entertainment\n5. Insurance\n6. iLong\n7. iShort\n8. House\n9. RRSP\n10. Return to main menu");
         int choice = userInputInteger();
 
@@ -111,7 +125,7 @@ public class UserInterface {
         }
     }
 
-    public void moveMenu(){
+    public void moveMenu() throws IOException {
         moveMenuFlag = true;
         removeMenu();
         addMenu();
@@ -119,7 +133,7 @@ public class UserInterface {
         mainMenu();
     }
 
-    public void viewAll(){
+    public void viewAll() throws IOException {
 
         for (int i = 0; i < Category.categories.size(); i++){
             System.out.println(Category.categories.get(i));
